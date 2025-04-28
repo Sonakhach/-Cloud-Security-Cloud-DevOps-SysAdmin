@@ -152,7 +152,7 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
       cd ~/
 
      ```
-     ---
+---
  5. Dockerized Multi-Service Setup
      
      |Service | Purpose|
@@ -195,7 +195,7 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
 | Network   | Isolates services for security |
 
      
-       ---
+---
 5.3. Important Docker Points
 
    .Use Alpine/Debian lightweight images.
