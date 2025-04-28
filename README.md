@@ -189,7 +189,7 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
 ```
 
 5.2. How it Works
-
+-
 | Component | Description |
 |-----------|-------------|
 | NGINX     | Enforces HTTPS (TLSv1.2/1.3 only), reverse proxy to WordPress |
@@ -214,9 +214,9 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
 
 ---
 6. Security Measures
-   
+   ---   
 6.1. Linux Hardening
-
+---
    .Disable root login over SSH.
 
    .SSH key-only authentication (RSA 4096 bits).
@@ -298,7 +298,11 @@ Reset everything (optional):
 This project demonstrates:
 
 ✅ Automated cloud deployment (Terraform + AWS)
+
 ✅ Secure Linux administration (SSH, sudo, hardening)
+
 ✅ Dockerized scalable services (NGINX, WordPress, MariaDB)
+
 ✅ Proper security practices (TLS, secrets management)
+
 ✅ Infrastructure-as-Code principles
