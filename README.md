@@ -155,12 +155,13 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
      ---
  5. Dockerized Multi-Service Setup
      
-     Service | Purpose
-     |:-----|:-----|
-NGINX | Reverse proxy + SSL/TLS enforcement
-PHP-FPM + WordPress | Host WordPress application
-MariaDB | WordPress database
-Volumes | Persistent data for MariaDB and WordPress
+     |Service | Purpose|
+     |:-------|:-------|
+    |NGINX | Reverse proxy + SSL/TLS enforcement|
+    |PHP-FPM + WordPress | Host WordPress application|
+    |MariaDB | WordPress database|
+    |Volumes | Persistent data for MariaDB and WordPress|
+
 ---
 
 5.1. Project Structure
