@@ -156,7 +156,7 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
  5. Dockerized Multi-Service Setup
      
      |Service | Purpose|
-     |:-------|:-------|
+     |:-------|-------:|
     |NGINX | Reverse proxy + SSL/TLS enforcement|
     |PHP-FPM + WordPress | Host WordPress application|
     |MariaDB | WordPress database|
@@ -165,6 +165,8 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
 ---
 
 5.1. Project Structure
+
+```
       inception/
 ├── docker-compose.yml
 ├── Makefile
@@ -180,12 +182,12 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
 │   └── init.sql
 ├── .env
 
+```
+
 5.2. How it Works
 
       |Component | Description|
-         
-       |Service | Purpose|
-       |:-------|:-------|
+      |:-------|-------:|
        |NGINX | Enforces HTTPS (TLSv1.2/1.3 only), reverse proxy to WordPress|
        |PHP-FPM | Runs WordPress PHP|
        |MariaDB | Database for WordPress|
