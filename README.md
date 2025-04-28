@@ -183,7 +183,9 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
 5.2. How it Works
 
       |Component | Description|
-      |:---------|:----------|      
+      |:---------|:----------|     
+       |Service | Purpose|
+     |:-------|:-------|
       |NGINX | Enforces HTTPS (TLSv1.2/1.3 only), reverse proxy to WordPress|
       |PHP-FPM | Runs WordPress PHP|
       |MariaDB | Database for WordPress|
