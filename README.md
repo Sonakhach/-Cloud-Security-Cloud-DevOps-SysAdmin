@@ -1,6 +1,6 @@
 # Cloud Security / Cloud DevOps / SysAdmin Project Documentation
 1. Project Overview
-   
+   -
 This project sets up a hardened Linux server infrastructure on AWS Cloud using:
 
  . Terraform to automate server deployment.
@@ -19,9 +19,9 @@ This project sets up a hardened Linux server infrastructure on AWS Cloud using:
  
 ---
 2. Setup Guide
-   
+   -  
 2.1. Install Required Tools
-   
+   -
    . Install Terraform:
 ```
 sudo apt update && sudo apt install -y gnupg software-properties-common
@@ -56,7 +56,7 @@ Enter:
    .Output Format (json)
 
 2.2. Create Terraform Project
-   
+   -
   . Create project folder:
   
   ```
@@ -72,9 +72,9 @@ Files inside:
 
   ---
 3. Infrastructure with Terraform
-     
+   -   
 3.1. Deploy Hardened Linux Server
-
+   -
 Steps:
 
    1. Initialize Terraform:
