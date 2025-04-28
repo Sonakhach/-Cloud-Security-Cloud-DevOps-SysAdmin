@@ -16,6 +16,7 @@ This project sets up a hardened Linux server infrastructure on AWS Cloud using:
  ..env file for environment security.
 
  . Automated scripts for provisioning, user creation, and server hardening.
+ 
 ---
 2. Setup Guide
    
@@ -97,9 +98,9 @@ Steps:
       terraform apply -auto-approve
 
       ```
-   ---
+  
 3.2. Server Hardening via `setup.sh`
-
+---
 On instance launch:
 
    . Create secure user (`hardeneduser`).
@@ -109,8 +110,10 @@ On instance launch:
    . Setup SSH (RSA 4096-bit key, no password, only key login).
 
    . Disable root password login.
----
+   
+
 3.3. SSH into Instance   
+---
 ```
 ssh -i ~/.ssh/id_rsa hardeneduser@<YOUR_SERVER_IP>
 ```
@@ -122,9 +125,9 @@ ssh -i ~/.ssh/id_rsa hardeneduser@<YOUR_SERVER_IP>
 ```
 sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-esr
 ```
----
-4.2. Create Admin User
 
+4.2. Create Admin User
+---
   . Add to groups:
    ```
    sudo usermod -aG sudo <username>
@@ -162,9 +165,10 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
     |MariaDB | WordPress database|
     |Volumes | Persistent data for MariaDB and WordPress|
 
----
+
 
 5.1. Project Structure
+---
 
 ```
       inception/
@@ -195,9 +199,9 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
 | Network   | Isolates services for security |
 
      
----
-5.3. Important Docker Points
 
+5.3. Important Docker Points
+---
    .Use Alpine/Debian lightweight images.
 
    .One service per container (NGINX, MariaDB, PHP-FPM).
@@ -222,9 +226,10 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
    .Sudoers configured carefully.
 
    .Firewall rules applied (AWS SG + host firewall).
----
-6.2. Web Security
+   
 
+6.2. Web Security
+---
    .NGINX enforces TLS only.
 
    .Certificates generated automatically if needed.
@@ -236,9 +241,10 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
    .Use of secure PHP-FPM settings.
 
    .Secrets hidden via .env.
----
-6.3. Docker Security
+   
 
+6.3. Docker Security
+---
    .No plain-text secrets inside Compose.
 
    .Only needed ports are exposed.
@@ -246,8 +252,10 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
    .Services isolated into their own containers.
 
    .Network encrypted.
----
+   
+
 7. Best Practices & Reminders
+   ---   
    .Use .gitignore to exclude .env and Docker volumes from GitHub.
 
    .Regenerate SSL certificates before production launch.
@@ -258,9 +266,9 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
 
    .Use healthchecks in Compose for production readiness.
    
----
+
 8. Deployment
-   
+   ---  
 Build and start services:
 ```make start
 ```
@@ -270,8 +278,9 @@ Monitor logs:
 Reset everything (optional):
 ```make clean
 ```
----
+
 9. Access
+   ---
    .Visit WordPress:
 
    `https://<your-public-ip>:4343/`
