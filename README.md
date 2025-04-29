@@ -362,13 +362,17 @@ Key Docker Terminology
 8. Deployment
    ---  
 Build and start services:
-```make start
+
+```
+make start
 ```
 Monitor logs:
-```make log
+```
+make log
 ```
 Reset everything (optional):
-```make clean
+```
+make clean
 ```
 
 9. Access
