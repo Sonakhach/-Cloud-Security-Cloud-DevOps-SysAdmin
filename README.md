@@ -134,27 +134,28 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
    sudo usermod -aG docker <username>
 
    ```
-   . Verify:
-   
-    ```
-    getent group sudo
-     ``` 
-     . Grant sudo permissions:
+. Verify  user was successfully added to sudo and docker group:
+ ```
+ getent group sudo
+ ```
+
+. Grant sudo permissions:
      
-     ```
+```
       sudo visudo
       # Add:
       <username> ALL=(ALL:ALL) ALL
 
      ```
-     . Reboot and switch to the user:
+
+. Reboot and switch to the user:
      
-     ```
+```
       reboot
       su <username>
       cd ~/
 
-     ```
+```
 ---
  5. Dockerized Multi-Service Setup
      
