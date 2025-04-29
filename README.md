@@ -146,7 +146,7 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
       # Add:
       <username> ALL=(ALL:ALL) ALL
 
-     ```
+```
 
 . Reboot and switch to the user:
      
@@ -157,12 +157,11 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
 
 ```
 ---
- 5. Dockerized Multi-Service Setup
-     
-     |Service | Purpose|
-     |:-------|-------:|
-    |NGINX | Reverse proxy + SSL/TLS enforcement|
-    |PHP-FPM + WordPress | Host WordPress application|
+5. Dockerized Multi-Service Setup
+     | Service | Purpose |
+     |--------|--------|
+    | NGINX | Reverse proxy + SSL/TLS enforcement |
+    | PHP-FPM + WordPress | Host WordPress application |
     |MariaDB | WordPress database|
     |Volumes | Persistent data for MariaDB and WordPress|
 
