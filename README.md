@@ -73,32 +73,6 @@ Files inside:
   ---
 3. Infrastructure with Terraform
    -
-1. Terraform EC2 Deployment
-
-**Terraform `` Summary**:
-
-   **.SSH Key Pair**: Automatically imported from `~/.ssh/id_rsa.pub`
-
-   **Security Group**: Only allows SSH from a specific IP (e. g., `5.77.202.168/32`)
-
-   **EC2 Instances**:  `t2.micro` Linux VMs using a hardened AMI
-
-   **User Data Script**: Executes `setup.sh` on instance boot
-
-To deploy:
-
-```
-terraform apply -auto-approve
-```
-**To deploy new instances,** rename:
-
-```
-# Change key name
-key_name = "deployer-key-new"
-
-# Change SG name
-name = "allow_ssh_new"
-```
 
 3.1. Deploy Hardened Linux Server
    -
@@ -120,11 +94,36 @@ Steps:
 
       ```  
    4. Destroy and recreate (if needed):
-      ```
+      
+ ```
       terraform destroy -auto-approve
       terraform apply -auto-approve
 
-      ```
+ ```
+
+
+**Terraform `main.tf` Summary**:
+
+   **.SSH Key Pair**: Automatically imported from `~/.ssh/id_rsa.pub`
+
+   **Security Group**: Only allows SSH from a specific IP (e. g., `5.77.202.168/32`)
+
+   **EC2 Instances**:  `t2.micro` Linux VMs using a hardened AMI
+
+   **User Data Script**: Executes `setup.sh` on instance boot
+
+
+**To deploy new instances,** rename:
+
+```
+`main.tf`
+
+# Change key name
+key_name = "deployer-key-new"
+
+# Change SG name
+name = "allow_ssh_new"
+```
   
 3.2. Server Hardening via `setup.sh`
 ---
@@ -183,6 +182,9 @@ ssh hardeneduser@<instance_ip> -p 22
 ```
 ssh -i ~/.ssh/id_rsa hardeneduser@<YOUR_SERVER_IP>
 ```
+
+
+
 ---
 4. Linux System Preparation
    ---
