@@ -47,11 +47,11 @@ aws --version
    ```
 Enter:
 
-   .Access Key
+   .Access Key  ID
 
-   .Secret Key
+   .Secret Access Key
 
-   .Region
+   .Region   (e.g., us-east-1)
 
    .Output Format (json)
 
