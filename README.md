@@ -73,30 +73,32 @@ Files inside:
   ---
 3. Infrastructure with Terraform
    -
-    1. Terraform EC2 Deployment
+1. Terraform EC2 Deployment
 
-Terraform `` Summary:
+**Terraform `` Summary**:
 
-SSH Key Pair: Automatically imported from ~/.ssh/id_rsa.pub
+   **.SSH Key Pair**: Automatically imported from `~/.ssh/id_rsa.pub`
 
-Security Group: Only allows SSH from a specific IP (5.77.202.168/32)
+   **Security Group**: Only allows SSH from a specific IP (e. g., `5.77.202.168/32`)
 
-EC2 Instances: Two t2.micro Linux VMs using a hardened AMI
+   **EC2 Instances**:  `t2.micro` Linux VMs using a hardened AMI
 
-User Data Script: Executes setup.sh on instance boot
+   **User Data Script**: Executes `setup.sh` on instance boot
 
-✅ To deploy:
+To deploy:
 
+```
 terraform apply -auto-approve
+```
+**To deploy new instances,** rename:
 
-📈 To deploy new instances, rename:
-
+```
 # Change key name
 key_name = "deployer-key-new"
 
 # Change SG name
 name = "allow_ssh_new"
-
+```
 
 3.1. Deploy Hardened Linux Server
    -
@@ -126,6 +128,16 @@ Steps:
   
 3.2. Server Hardening via `setup.sh`
 ---
+Purpose: Create a secure Linux user with SSH key-only access
+
+**Automates:**
+
+   . User creation under group devs
+
+   . SSH key generation and setup
+
+   . Password login disablement (passwd -l)
+   
 On instance launch:
 
    . Create secure user (`hardeneduser`).
@@ -135,7 +147,36 @@ On instance launch:
    . Setup SSH (RSA 4096-bit key, no password, only key login).
 
    . Disable root password login.
-   
+
+**Key Steps:**
+
+   1.Create group & user
+
+   2.Set up `` directory
+
+   3.Generate 4096-bit RSA key pair
+
+   4.**Setup **``
+
+   5.Lock password login
+
+**Security Notes:**
+
+   . Never expose the private key
+
+   . Store private keys securely (e.g., encrypted vault)
+
+   . Only root/sudo should execute the script
+```
+chmod +x setup.sh
+sudo ./setup.sh
+```
+ Connect:
+ 
+```
+ssh hardeneduser@<instance_ip> -p 22
+```
+
 
 3.3. SSH into Instance   
 ---
@@ -144,16 +185,17 @@ ssh -i ~/.ssh/id_rsa hardeneduser@<YOUR_SERVER_IP>
 ```
 ---
 4. Linux System Preparation
-   
-4.1. Install Packages
-
+   ---   
+4.1.  Docker & Services Deployment
+-
+Install Dependencies:
 ```
 sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-esr
 ```
 
 4.2. Create Admin User
 ---
-  . Add to groups:
+  . Add User to groups:
    ```
    sudo usermod -aG sudo <username>
    sudo usermod -aG docker <username>
@@ -181,15 +223,40 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
       cd ~/
 
 ```
----
-5. Dockerized Multi-Service Setup
-     | Service | Purpose |
-     |--------|--------|
-    | NGINX | Reverse proxy + SSL/TLS enforcement |
-    | PHP-FPM + WordPress | Host WordPress application |
-    |MariaDB | WordPress database|
-    |Volumes | Persistent data for MariaDB and WordPress|
 
+Key Docker Terminology
+---
+| Term               | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| **Docker**         | Platform to develop/run containers in isolated environments                 |
+| **Container**      | A runtime instance of a Docker image; runs one service                      |
+| **Image**          | Blueprint/template used to launch containers                                |
+| **Dockerfile**     | Script to build an image (base OS, config, dependencies)                    |
+| **Docker Compose** | Tool to manage multi-container apps via `docker-compose.yml`                |
+| **Service**        | In Compose: a container defined with configs                                |
+| **Volume**         | Persistent storage mounted into containers                                  |
+| **Network**        | Isolated virtual network for containers to communicate                      |
+| **NGINX**          | Web server, reverse proxy, TLS enforcer                                     |
+| **TLS**            | Encryption protocol (successor to SSL), ensures HTTPS                       |
+| **WordPress**      | Open-source CMS to manage web content                                       |
+| **PHP-FPM**        | Optimized PHP runtime used by WordPress                                     |
+| **MariaDB**        | MySQL-compatible relational database                                        |
+| **Makefile**       | Automates build/deployment processes                                        |
+| **VM**             | Emulated OS environment used for isolation                                  |
+| **.env file**      | Secure file for storing environment variables (passwords, ports, etc.)      |
+
+
+5. Dockerized Multi-Service Setup
+   --- 
+
+| Service              | Purpose                                |
+|----------------------|----------------------------------------|
+| **NGINX**            | Reverse proxy + SSL/TLS enforcement    |
+| **PHP-FPM + WordPress** | Host WordPress application             |
+| **MariaDB**          | WordPress database                     |
+| **Volumes**          | Persistent data for MariaDB and WordPress |
+
+    
 
 
 5.1. Project Structure
