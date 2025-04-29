@@ -1,5 +1,5 @@
 # Cloud Security / Cloud DevOps / SysAdmin Project Documentation
-1. Project Overview
+1. Project Overview 
    -
 This project sets up a hardened Linux server infrastructure on AWS Cloud using:
 
