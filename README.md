@@ -181,7 +181,29 @@ ssh hardeneduser@<instance_ip> -p 22
 ---
 ```
 ssh -i ~/.ssh/id_rsa hardeneduser@<YOUR_SERVER_IP>
+
 ```
+   When admin want creat new user  on terminal run ./create_user.sh
+
+Automated User Creation Script
+✅ create_user.sh functionality:
+
+   . Create user & assign to devs group
+
+   . Generate SSH keys
+
+   . Lock password login
+
+   . Set correct permissions on .ssh
+
+🔐 Security Best Practices:
+
+   . Only SSH login allowed
+
+   . Keys stored securely
+
+   . Private key needs secure export
+
 
 
 
