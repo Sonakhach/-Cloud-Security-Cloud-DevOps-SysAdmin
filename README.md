@@ -185,7 +185,29 @@ ssh -i ~/.ssh/id_rsa hardeneduser@<YOUR_SERVER_IP>
 ```
 ---
 4. Linux System Preparation
-   ---   
+   ---
+   Key Docker Terminology
+---
+| Term               | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| **Docker**         | Platform to develop/run containers in isolated environments                 |
+| **Container**      | A runtime instance of a Docker image; runs one service                      |
+| **Image**          | Blueprint/template used to launch containers                                |
+| **Dockerfile**     | Script to build an image (base OS, config, dependencies)                    |
+| **Docker Compose** | Tool to manage multi-container apps via `docker-compose.yml`                |
+| **Service**        | In Compose: a container defined with configs                                |
+| **Volume**         | Persistent storage mounted into containers                                  |
+| **Network**        | Isolated virtual network for containers to communicate                      |
+| **NGINX**          | Web server, reverse proxy, TLS enforcer                                     |
+| **TLS**            | Encryption protocol (successor to SSL), ensures HTTPS                       |
+| **WordPress**      | Open-source CMS to manage web content                                       |
+| **PHP-FPM**        | Optimized PHP runtime used by WordPress                                     |
+| **MariaDB**        | MySQL-compatible relational database                                        |
+| **Makefile**       | Automates build/deployment processes                                        |
+| **VM**             | Emulated OS environment used for isolation                                  |
+| **.env file**      | Secure file for storing environment variables (passwords, ports, etc.)      |
+
+
 4.1.  Docker & Services Deployment
 -
 Install Dependencies:
@@ -223,27 +245,6 @@ sudo apt install -y sudo docker docker-compose make openbox xinit kitty firefox-
       cd ~/
 
 ```
-
-Key Docker Terminology
----
-| Term               | Description                                                                 |
-|--------------------|-----------------------------------------------------------------------------|
-| **Docker**         | Platform to develop/run containers in isolated environments                 |
-| **Container**      | A runtime instance of a Docker image; runs one service                      |
-| **Image**          | Blueprint/template used to launch containers                                |
-| **Dockerfile**     | Script to build an image (base OS, config, dependencies)                    |
-| **Docker Compose** | Tool to manage multi-container apps via `docker-compose.yml`                |
-| **Service**        | In Compose: a container defined with configs                                |
-| **Volume**         | Persistent storage mounted into containers                                  |
-| **Network**        | Isolated virtual network for containers to communicate                      |
-| **NGINX**          | Web server, reverse proxy, TLS enforcer                                     |
-| **TLS**            | Encryption protocol (successor to SSL), ensures HTTPS                       |
-| **WordPress**      | Open-source CMS to manage web content                                       |
-| **PHP-FPM**        | Optimized PHP runtime used by WordPress                                     |
-| **MariaDB**        | MySQL-compatible relational database                                        |
-| **Makefile**       | Automates build/deployment processes                                        |
-| **VM**             | Emulated OS environment used for isolation                                  |
-| **.env file**      | Secure file for storing environment variables (passwords, ports, etc.)      |
 
 
 5. Dockerized Multi-Service Setup
